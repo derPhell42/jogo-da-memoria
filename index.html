@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="./src/styles/reset.css">
+    <link rel="stylesheet" href="./src/styles/main2.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>JOGO DA MEMÓRIA</h2>
+        <div class="game"></div>
+        <div class="anchor-point">
+            <span class="time">Tempo: 05:00</span>
+            <span class="points">Pontos: 300</span>
+        </div>
+
+        <button id="reset-button" class="reset">Novo Jogo</button>
+
+    </div>
+
+    <span class="point-changes" id="point-changes-gained"></span>
+    <span class="point-changes" id="point-changes-lost"></span>
+
+    <div class="overlay" id="intro-overlay">
+        <div class="intro-content">
+            <h3>Bem-vindo ao Jogo da Memória!</h3>
+            <br><br>
+            <p>Este é um jogo de memória clássico. Você precisa encontrar todos os pares de cartas no menor tempo
+                possível.</p>
+            <br><br>
+            <p>A cada par de cartas que você combina corretamente, você ganha 60 pontos. No entanto, se combinar cartas
+                incorretamente, você perderá 25 pontos. Além disso, a cada 10 segundos, você perderá 30 pontos.</p>
+            <p>O tempo é limitado, então seja rápido! E, se possível, não se esqueça de nada!</p>
+            <p>Compartilhar nossa página, por exemplo, é algo que você não pode esquecer!</p>
+            <br><br>
+            <button id="start-button" class="play-button" onclick="hideOverlay()">Jogar</button>
+            <button id="share-button">Compartilhar</button>
+        </div>
+    </div>
+
+    <script src="./src/scripts/engine2.js" defer></script>
+
+    <script>
+        function hideOverlay() {
+            document.getElementById('intro-overlay').style.display = 'none';
+            startGame(); // Chamando a função para iniciar o jogo após ocultar a overlay
+        }
+    </script>
+</body>
+
+</html>

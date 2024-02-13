@@ -1,0 +1,279 @@
+/* CSS atualizado */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fc1e8a;
+    user-select: none; /* Corrige o valor da propriedade user-select */
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(325deg, #03001e 0%, #7303C0 30%, #ec38bc 70%, #fdeff9 100%);
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+h3 {
+    font-size: 1.5em;
+    color: #ec38bc;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset {
+    padding: 15px 20px;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reset:focus {
+    color: #fff;
+    background-color: #ec38bc;
+}
+
+.game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+    
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    /* opacity: 50%; */
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after {
+    transform: rotateY(180deg);
+}
+
+.boxMatch::after {
+    transform: rotateY(180deg);
+}
+
+
+
+.point-changes {
+    position:fixed; /* Alterado para position: fixed */
+    top: 50%; /* Posiciona o elemento no meio verticalmente */
+    left: 50%; /* Posiciona o elemento no meio horizontalmente */
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    z-index: 9999;
+    pointer-events: nome;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+}
+
+.point-changes.down {
+    text-shadow: #fff;
+    color: #ff0000; /* Vermelho para dedução */
+    animation-name: slideDown;
+    text-align: center;
+    font-size: 6em;
+    
+}
+
+.point-changes.up {
+    text-shadow: #03001e;
+    color: #0000ff; /* Azul para adição */
+    animation-name: slideUp;
+    text-align:justify;
+    font-size: 6em;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(calc(-100px - (Math.random() * 50px))); /* Movimento para baixo mais longe com aleatoriedade */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) translateX(-100%); /* Movimento inicial para baixo e para a esquerda */
+    }
+    50% {
+        transform: translateY(calc(-35vh + 50px)) translateX(0); /* Movimento para cima */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(calc(-40vh + 50px)) translateX(100%); /* Movimento final para cima e para a direita */
+    }
+}
+.time,
+.points {
+    color: #fff;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.time {
+    margin-bottom: 10px; /* Adiciona margem abaixo do tempo */
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Opacidade reduzida */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: center;
+    font-size: 2em;
+}
+
+#start-button,#share-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #ec38bc;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+#start-button:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para o overlay */
+/* Estilos para o overlay */
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o conteúdo do overlay */
+.overlay2-content {
+    background-color: #fff; /* Cor de fundo do conteúdo */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    text-align: center; /* Alinhamento do texto */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Estilos para o botão dentro do overlay */
+.overlay2-content button {
+    margin-top: 20px; /* Espaçamento superior */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    background-color: #ec38bc; /* Cor de fundo do botão */
+    border: none; /* Sem borda */
+    color: #fff; /* Cor do texto */
+    cursor: pointer; /* Cursor ao passar */
+    border-radius: 5px; /* Bordas arredondadas */
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+/* Estilos para o foco do botão dentro do overlay */
+.overlay2-content button:focus {
+    outline: none; /* Sem contorno ao focar */
+}
+
+/* Estilo para o efeito de propagação */
+
+.spread-effect {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* Cor do efeito */
+    pointer-events: none; /* Garante que o efeito não seja clicável */
+    animation: spread 0.5s ease-out forwards; /* Animação do efeito */
+}
+
+/* Animação para o efeito de propagação */
+@keyframes spread {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
